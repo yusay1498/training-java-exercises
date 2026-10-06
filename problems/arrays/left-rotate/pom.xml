@@ -8,11 +8,10 @@
         <groupId>dev.practice</groupId>
         <artifactId>training-java-exercises</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../../pom.xml</relativePath>
+        <relativePath>../../../pom.xml</relativePath>
     </parent>
 
-    <artifactId>problem-template</artifactId>
-    <packaging>jar</packaging>
+    <artifactId>array-left-rotate</artifactId>
 
     <dependencies>
         <dependency>

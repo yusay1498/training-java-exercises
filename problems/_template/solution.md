@@ -15,7 +15,7 @@
 
 ## Java 解答例
 
-実行可能な模範解答は、この問題モジュールの `src/main/java/Main.java` に記載します。解答コードとこの解説のアルゴリズム・計算量が一致していることを確認してください。
+学習者が回答を書くファイルは、この問題モジュールの `src/main/java/Main.java` です。完成した模範解答は `src/main/java/reference/ReferenceMain.java` に分け、テストは `src/test/java/reference/ReferenceMainTest.java` に配置します。解説と参照解答のアルゴリズム・計算量が一致していることを確認してください。
 
 ## 実装上の注意
 
