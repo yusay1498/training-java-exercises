@@ -64,6 +64,17 @@ problems/
           reference/ReferenceMain.java
         test/java/
           reference/ReferenceMainTest.java
+  stack-queue/
+    two-stack-queue/
+      pom.xml
+      problem.md
+      solution.md
+      src/
+        main/java/
+          Main.java
+          reference/ReferenceMain.java
+        test/java/
+          reference/ReferenceMainTest.java
 ```
 
 ## 問題の追加
