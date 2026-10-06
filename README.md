@@ -86,6 +86,17 @@ problems/
           reference/ReferenceMain.java
         test/java/
           reference/ReferenceMainTest.java
+  sorting-searching/
+    first-occurrence/
+      pom.xml
+      problem.md
+      solution.md
+      src/
+        main/java/
+          Main.java
+          reference/ReferenceMain.java
+        test/java/
+          reference/ReferenceMainTest.java
 ```
 
 ## 問題の追加
