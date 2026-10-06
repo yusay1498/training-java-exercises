@@ -11,6 +11,7 @@
 
     <modules>
         <module>problems/arrays/left-rotate</module>
+        <module>problems/hash-map/two-sum</module>
     </modules>
 
     <properties>
