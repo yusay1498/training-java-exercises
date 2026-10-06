@@ -13,34 +13,54 @@ AtCoderの色は参加者レートの区分です。レート800前後は緑、�
 ## 実装時の前提
 
 - Java 25
+- Maven Wrapper 3.3.4（Maven 3.9.16を自動取得）
 
-問題ごとのMavenモジュールと実行手順は、模範解答・テストを追加する段階で整備します。現時点では問題文と解説のテンプレートが中心で、実行可能な問題モジュールは含みません。
+各問題は独立したMavenモジュールです。解答するときは `src/main/java/Main.java` を編集します。模範解答は `src/main/java/reference/ReferenceMain.java` に分け、JUnitテストと実行可能JARは参照解答を検証します。
+
+ルートから全問題をテストするには `./mvnw test`、個別の問題モジュールをテストするには `./mvnw -pl problems/arrays/left-rotate test` を実行します。
+
+学習者の `Main.java` を実行するときは、先にコンパイルしてからクラスを指定します。雛形のままでは `solve` が未実装のため、実装後に実行してください。
+
+```sh
+./mvnw -pl problems/arrays/left-rotate compile
+java -cp problems/arrays/left-rotate/target/classes Main < input.txt
+```
+
+模範解答の実行可能JARは `./mvnw -pl problems/arrays/left-rotate package` で作成し、次のように実行できます。JUnitテストも模範解答を対象にしています。
+
+```sh
+java -jar problems/arrays/left-rotate/target/array-left-rotate-1.0-SNAPSHOT.jar
+```
 
 ## 現在の構成と今後の予定
 
-現在のPRでは要件・README・問題文/解説テンプレートを整備しています。問題と解答コードを含むモジュール構成はまだ導入していません。
-
-次段階では、ルートをMavenの集約POMとし、**1問題につき1つの独立したMavenモジュール**を作る方針です。問題文、解説、実行可能な模範解答、テストを問題単位にまとめ、各問題で独立した `Main` クラスを使えるようにします。
+ルートPOMはMavenの集約POMで、問題ごとに独立したMavenモジュールを登録します。各モジュールには問題文、解説、実行可能な模範解答、テストを配置し、問題ごとに独立した `Main` クラスを使用します。
 
 ```text
 problems/
   _template/
     problem.md
     solution.md
+    pom.xml
   arrays/
-    <problem-id>/       # 将来追加する問題モジュール
+    left-rotate/
       pom.xml
       problem.md
       solution.md
-      src/main/java/Main.java
-      src/test/java/MainTest.java
+      src/
+        main/java/
+          Main.java
+          reference/ReferenceMain.java
+        test/java/
+          reference/ReferenceMainTest.java
 ```
 
 ## 問題の追加
 
-1. 対象分野の下に問題ごとのディレクトリを作成します。
-2. `problems/_template/problem.md` を複製し、問題文・入出力・制約・サンプルを記入します。
-3. `problems/_template/solution.md` を複製し、解法方針・正当性・計算量を記入します。
-4. モジュール化後は、模範解答を `src/main/java/Main.java`、テストを `src/test/java/MainTest.java` に置きます。
+1. `problems/_template/` を `problems/<category>/<problem-id>/` へ複製します。
+2. 複製先の `pom.xml` で、親POMの `<relativePath>` を `../../../pom.xml` に変更し、`<artifactId>` を問題固有の値に変更します。例えば問題IDが `array-two-sum` なら、`array-two-sum` とします。
+3. `problem.md` に問題文・入出力・制約・サンプルを、`solution.md` に解法方針・正当性・計算量を記入します。
+4. 学習者が編集する `src/main/java/Main.java` と、検証済み模範解答 `src/main/java/reference/ReferenceMain.java` を分けます。参照解答のテストは `src/test/java/reference/ReferenceMainTest.java` に置きます。
+5. ルートの `pom.xml` の `<modules>` に、作成した `problems/<category>/<problem-id>` を登録します。
 
 問題を解く際は `problem.md` を先に読み、解答後に `solution.md` と模範解答を参照してください。解答・解説は学習用の一例であり、別の正しい解法もあります。
