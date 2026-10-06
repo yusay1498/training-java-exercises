@@ -53,6 +53,17 @@ problems/
           reference/ReferenceMain.java
         test/java/
           reference/ReferenceMainTest.java
+  hash-map/
+    two-sum/
+      pom.xml
+      problem.md
+      solution.md
+      src/
+        main/java/
+          Main.java
+          reference/ReferenceMain.java
+        test/java/
+          reference/ReferenceMainTest.java
 ```
 
 ## 問題の追加
