@@ -43,20 +43,24 @@ problems/
     solution.md
     pom.xml
   arrays/
-      `left-rotate/`
+    left-rotate/
       pom.xml
       problem.md
       solution.md
-      src/main/java/Main.java
-        src/main/java/reference/ReferenceMain.java
-        src/test/java/reference/ReferenceMainTest.java
+      src/
+        main/java/
+          Main.java
+          reference/ReferenceMain.java
+        test/java/
+          reference/ReferenceMainTest.java
 ```
 
 ## 問題の追加
 
-1. `problems/_template/` を複製し、対象分野の下に問題ごとのディレクトリを作成します。
-2. `problems/_template/problem.md` を複製し、問題文・入出力・制約・サンプルを記入します。
-3. `problems/_template/solution.md` を複製し、解法方針・正当性・計算量を記入します。
-4. 学習者が編集する `src/main/java/Main.java` と、検証済み模範解答 `src/main/java/reference/ReferenceMain.java` を分けます。参照解答のテストは `src/test/java/reference/ReferenceMainTest.java` に置き、子POMをルートPOMの `<modules>` に登録します。
+1. `problems/_template/` を `problems/<category>/<problem-id>/` へ複製します。
+2. 複製先の `pom.xml` で、親POMの `<relativePath>` を `../../../pom.xml` に変更し、`<artifactId>` を問題固有の値に変更します。例えば問題IDが `array-two-sum` なら、`array-two-sum` とします。
+3. `problem.md` に問題文・入出力・制約・サンプルを、`solution.md` に解法方針・正当性・計算量を記入します。
+4. 学習者が編集する `src/main/java/Main.java` と、検証済み模範解答 `src/main/java/reference/ReferenceMain.java` を分けます。参照解答のテストは `src/test/java/reference/ReferenceMainTest.java` に置きます。
+5. ルートの `pom.xml` の `<modules>` に、作成した `problems/<category>/<problem-id>` を登録します。
 
 問題を解く際は `problem.md` を先に読み、解答後に `solution.md` と模範解答を参照してください。解答・解説は学習用の一例であり、別の正しい解法もあります。

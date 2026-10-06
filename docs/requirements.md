@@ -36,14 +36,19 @@ problems/<category>/<problem-id>/
   pom.xml
   problem.md
   solution.md
-  src/main/java/Main.java
-  src/main/java/reference/ReferenceMain.java
-  src/test/java/reference/ReferenceMainTest.java
+  src/
+    main/java/
+      Main.java
+      reference/ReferenceMain.java
+    test/java/
+      reference/ReferenceMainTest.java
 ```
 
 `Main.java` は学習者が回答を記入するための雛形です。実行・テスト可能な模範解答は `reference.ReferenceMain` に分離し、解説Markdownにはコード本体を埋め込みません。
 
 `problems/_template/` は新しい問題モジュールを作るための雛形であり、Maven reactorには含めません。実問題の子モジュールを追加したときは、ルートPOMの `<modules>` に登録します。
+
+テンプレートPOMの親相対パスは、テンプレート配置の `problems/_template/` からルートを指す `../../pom.xml` です。これを `problems/<category>/<problem-id>/` に複製した後は、ルートを指す `../../../pom.xml` に必ず変更します。また、Maven座標の重複を避けるため、子POMの `<artifactId>` を問題ごとに一意な値へ変更します。
 
 ## 難易度表記に関する注意
 
@@ -54,3 +59,4 @@ AtCoderのレート色は参加者のレート区分を表し、個々の問題�
 - [AtCoder Rating](https://atcoder.jp/about/ratings)
 - [LeetCode Problemset](https://leetcode.com/problemset/)
 - [Maven Guide: Multiple Modules](https://maven.apache.org/guides/mini/guide-multiple-modules.html)
+- [Maven Model Reference: parent.relativePath](https://maven.apache.org/ref/current/maven-model/maven.html#class_parent)
