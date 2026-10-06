@@ -15,6 +15,7 @@
         <module>problems/stack-queue/two-stack-queue</module>
         <module>problems/graph-search/shortest-path</module>
         <module>problems/sorting-searching/first-occurrence</module>
+        <module>problems/dynamic-programming/minimum-coins</module>
     </modules>
 
     <properties>
