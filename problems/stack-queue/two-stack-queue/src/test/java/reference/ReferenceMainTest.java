@@ -2,6 +2,10 @@ package reference;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.PrintStream;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -34,5 +38,24 @@ class ReferenceMainTest {
         int[][] operations = {{1, 1}, {1, 2}, {2}, {1, 3}, {2}, {2}};
 
         assertEquals(List.of("1", "2", "3"), ReferenceMain.solve(operations));
+    }
+
+    @Test
+    void printsNothingWhenEveryOperationEnqueues() throws Exception {
+        InputStream originalInput = System.in;
+        PrintStream originalOutput = System.out;
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+
+        try {
+            System.setIn(new ByteArrayInputStream("3\n1 4\n1 5\n1 6\n".getBytes()));
+            System.setOut(new PrintStream(output));
+
+            ReferenceMain.main(new String[0]);
+
+            assertEquals("", output.toString());
+        } finally {
+            System.setIn(originalInput);
+            System.setOut(originalOutput);
+        }
     }
 }

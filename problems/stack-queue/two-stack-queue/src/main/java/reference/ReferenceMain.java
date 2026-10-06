@@ -23,7 +23,9 @@ public class ReferenceMain {
         }
 
         List<String> answers = solve(operations);
-        System.out.println(String.join(System.lineSeparator(), answers));
+        if (!answers.isEmpty()) {
+            System.out.println(String.join(System.lineSeparator(), answers));
+        }
     }
 
     static List<String> solve(int[][] operations) {
