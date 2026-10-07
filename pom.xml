@@ -11,6 +11,7 @@
 
     <modules>
         <module>problems/arrays/left-rotate</module>
+        <module>problems/arrays/range-sum</module>
         <module>problems/hash-map/two-sum</module>
         <module>problems/stack-queue/two-stack-queue</module>
         <module>problems/graph-search/shortest-path</module>
