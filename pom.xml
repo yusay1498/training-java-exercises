@@ -17,6 +17,7 @@
         <module>problems/graph-search/shortest-path</module>
         <module>problems/sorting-searching/first-occurrence</module>
         <module>problems/dynamic-programming/minimum-coins</module>
+        <module>problems/dynamic-programming/stair-steps</module>
     </modules>
 
     <properties>
